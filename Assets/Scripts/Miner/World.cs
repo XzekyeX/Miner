@@ -24,24 +24,19 @@ public class World : MonoBehaviour
             {
                 for (int z = 0; z < depth; z++)
                 {
-                    if (!(x >= (hw - 1 - area) && x <= (hw + area) && z >= (hd - 1 - area) && z <= (hd + area)))
+                    if (!(x >= (hw - 1 - area) && x <= (hw + area) && z >= (hd - 1 - area) && z <= (hd + area) && (y >= 1 && y <= height)))
                     {
                         int i = (int)Random.Range(0, types.Length);
-                        tiles[x, y, z] = new Tile(types[i], x, y, z);
+                        tiles[x, y, z] = new Tile(types[y > 0 ? i : 0], x, y, z);
                     }
                 }
             }
         }
-        //GameObject gp = GameObject.Find("Player");
-        //if (gp != null)
-        //{
-        //    Player p = gp.GetComponent<Player>();
-        //    if (p != null)
-        //    {
-        //        p.x = hw;
-        //        p.z = hd;
-        //    }
-        //}
+        GameObject gp = GameObject.Find("Player");
+        if (gp != null)
+        {
+            gp.transform.position = new Vector3(hw, 1, hd);
+        }
     }
 
     // Update is called once per frame
