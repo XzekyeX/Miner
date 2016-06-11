@@ -10,7 +10,8 @@ public class World : MonoBehaviour
     public int height;
     public int depth;
     public int area;
-    Tile[,,] tiles;
+    public TileType[] types;
+    public Tile[,,] tiles;
     // Use this for initialization
     void Start()
     {
@@ -25,21 +26,22 @@ public class World : MonoBehaviour
                 {
                     if (!(x >= (hw - 1 - area) && x <= (hw + area) && z >= (hd - 1 - area) && z <= (hd + area)))
                     {
-                        tiles[x, y, z] = new Tile(x, y, z);
+                        int i = (int)Random.Range(0, types.Length);
+                        tiles[x, y, z] = new Tile(types[i], x, y, z);
                     }
                 }
             }
         }
-        GameObject gp = GameObject.Find("Player");
-        if (gp != null)
-        {
-            Player p = gp.GetComponent<Player>();
-            if (p != null)
-            {
-                p.x = hw;
-                p.z = hd;
-            }
-        }
+        //GameObject gp = GameObject.Find("Player");
+        //if (gp != null)
+        //{
+        //    Player p = gp.GetComponent<Player>();
+        //    if (p != null)
+        //    {
+        //        p.x = hw;
+        //        p.z = hd;
+        //    }
+        //}
     }
 
     // Update is called once per frame
