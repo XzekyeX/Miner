@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miner.CSharp.Plugins", "Miner.CSharp.Plugins.csproj", "{AD0D6581-AE62-DDD9-6F16-D3E706AC6396}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Miner.CSharp", "Miner.CSharp.csproj", "{18CAA5D6-FD12-47B5-1B0C-BCCC46540EB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD0D6581-AE62-DDD9-6F16-D3E706AC6396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD0D6581-AE62-DDD9-6F16-D3E706AC6396}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD0D6581-AE62-DDD9-6F16-D3E706AC6396}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD0D6581-AE62-DDD9-6F16-D3E706AC6396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18CAA5D6-FD12-47B5-1B0C-BCCC46540EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18CAA5D6-FD12-47B5-1B0C-BCCC46540EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18CAA5D6-FD12-47B5-1B0C-BCCC46540EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18CAA5D6-FD12-47B5-1B0C-BCCC46540EB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
