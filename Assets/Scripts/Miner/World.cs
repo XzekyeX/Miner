@@ -15,13 +15,15 @@ public class World : MonoBehaviour
     {
         tiles = new Tile[width, height, depth];
         int a = 2;
+        int hw = (width / 2);
+        int hd = (depth / 2);
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
                 for (int z = 0; z < depth; z++)
                 {
-                    if ((x >= (width / 2) - a && x <= (width / 2) + a))
+                    if (!(x >= (hw - 1 - a) && x <= (hw + a) && z >= (hd - 1 - a) && z <= (hd + a)))
                     {
                         tiles[x, y, z] = new Tile(x, y, z);
                     }
