@@ -1,27 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour {
-	public float speed = 6.0F;
-	public float jumpSpeed = 8.0F;
-	public float gravity = 20.0F;
-	public Transform CameraTransform;
-	private Vector3 moveDirection = Vector3.zero;
+public class PlayerMovement : MonoBehaviour
+{
+    public float speed = 6.0F;
+    public float jumpSpeed = 8.0F;
+    public float gravity = 20.0F;
+    public float damping = 6.0F;
+    public bool lookAt = false;
+    private Vector3 moveDirection = Vector3.zero;
+    public Transform camera;
+    private Vector3 offset;
+    void Start()
+    {
+        offset = transform.position;
+    }
 
-	void Update() {
-		CharacterController controller = GetComponent<CharacterController>();
-		if (controller.isGrounded) {
-			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-			Quaternion inputRotation = Quaternion.LookRotation (Vector3.ProjectOnPlane (CameraTransform.forward, Vector3.up), Vector3.up);
-			moveDirection = inputRotation * transform.TransformDirection(moveDirection);
-			moveDirection *= speed;
-			if (Input.GetButton("Jump"))
-				moveDirection.y = jumpSpeed;
-			
-		}
-		moveDirection.y -= gravity * Time.deltaTime;
-		controller.Move(moveDirection * Time.deltaTime);
-	}
+    void Update()
+    {
+        CharacterController controller = GetComponent<CharacterController>();
+        if (controller.isGrounded)
+        {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Quaternion inputRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(camera.forward, Vector3.up), Vector3.up);
+            moveDirection = inputRotation * transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            if (Input.GetButton("Jump"))
+                moveDirection.y = jumpSpeed;
+
+        }
+        moveDirection.y -= gravity * Time.deltaTime;
+        controller.Move(moveDirection * Time.deltaTime);
+        if (lookAt)
+        {
+            float turnSpeed = 4.0f;
+            offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
+            camera.position = transform.position + offset;
+        }
+    }
 }
 
 
