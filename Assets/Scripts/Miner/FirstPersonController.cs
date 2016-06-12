@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/**
+ * @author Zekye
+ *
+ */
+[RequireComponent(typeof(CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
     public float movementSpeed = 2.0f;
@@ -11,10 +15,11 @@ public class FirstPersonController : MonoBehaviour
     public bool camLock = false;
     private float verticalRot = 0;
     private float verticalVelocity = 0;
+    private CharacterController cc;
     // Use this for initialization
     void Start()
     {
-
+        cc = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -34,7 +39,6 @@ public class FirstPersonController : MonoBehaviour
         verticalVelocity += gravity * Time.deltaTime;
         Vector3 speed = new Vector3(sideSpeed, verticalVelocity, forwardSpeed);
         speed = transform.rotation * speed;
-        CharacterController cc = GetComponent<CharacterController>();
         if (cc.isGrounded && Input.GetButton("Jump"))
         {
             verticalVelocity = jumpSpeed;
